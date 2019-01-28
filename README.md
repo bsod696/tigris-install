@@ -1,7 +1,7 @@
 tigris-install
 ===============
 
-This will install your Lamassu Bitcoin Machine remote server.
+This will install your Tigris Bitcoin Machine remote server.
 
 Instructions
 ------------
