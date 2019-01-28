@@ -138,7 +138,7 @@ openssl genrsa \
 
 openssl req -new \
   -key $SERVER_KEY_PATH \
-  -out /tmp/Lamassu_OP.csr.pem \
+  -out /tmp/Tigris_OP.csr.pem \
   -subj "/C=IS/ST=/L=Reykjavik/O=Tigris Operator/CN=$IP" \
   -reqexts SAN \
   -sha256 \
@@ -147,7 +147,7 @@ openssl req -new \
   >> $LOG_FILE 2>&1
 
 openssl x509 \
-  -req -in /tmp/Lamassu_OP.csr.pem \
+  -req -in /tmp/Tigris_OP.csr.pem \
   -CA $CA_PATH \
   -CAkey $CA_KEY_PATH \
   -CAcreateserial \
@@ -157,9 +157,9 @@ openssl x509 \
   -extensions SAN \
   -days 3650 >> $LOG_FILE 2>&1
 
-rm /tmp/Lamassu_OP.csr.pem
+rm /tmp/Tigris_OP.csr.pem
 
-decho "Copying Lamassu certificate authority..."
+decho "Copying Tigris certificate authority..."
 LAMASSU_CA_FILE=$NODE_MODULES/tigris-server/Tigris_CA.pem
 cp $LAMASSU_CA_FILE $LAMASSU_CA_PATH
 
