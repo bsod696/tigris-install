@@ -7,7 +7,7 @@ CERT_DIR=/etc/ssl/certs
 KEY_DIR=/etc/ssl/private
 CONFIG_DIR=/etc/tigris
 MIGRATE_STATE_PATH=$CONFIG_DIR/.migrate
-LAMASSU_CA_PATH=$CERT_DIR/Tigris_CA.pem
+TIGRIS_CA_PATH=$CERT_DIR/Tigris_CA.pem
 CA_KEY_PATH=$KEY_DIR/Tigris_OP_Root_CA.key
 CA_PATH=$CERT_DIR/Tigris_OP_Root_CA.pem
 SERVER_KEY_PATH=$KEY_DIR/Tigris_OP.key
@@ -160,8 +160,8 @@ openssl x509 \
 rm /tmp/Tigris_OP.csr.pem
 
 decho "Copying Tigris certificate authority..."
-LAMASSU_CA_FILE=$NODE_MODULES/tigris-server/Tigris_CA.pem
-cp $LAMASSU_CA_FILE $LAMASSU_CA_PATH
+TIGRIS_CA_FILE=$NODE_MODULES/tigris-server/Tigris_CA.pem
+cp $TIGRIS_CA_FILE $TIGRIS_CA_PATH
 
 mkdir -p $OFAC_DATA_DIR
 
@@ -169,7 +169,7 @@ cat <<EOF > $CONFIG_DIR/tigris.json
 {
   "postgresql": "postgres://tigris_pg:$POSTGRES_PW@localhost/tigris",
   "seedPath": "$SEED_FILE",
-  "lamassuCaPath": "$TIGRIS_CA_PATH",
+  "tigrisCaPath": "$TIGRIS_CA_PATH",
   "caPath": "$CA_PATH",
   "certPath": "$SERVER_CERT_PATH",
   "keyPath": "$SERVER_KEY_PATH",
@@ -245,7 +245,7 @@ chmod -x /etc/update-motd.d/*-cloudguest
 set -e
 
 echo
-decho "Done! Now it's time to configure Lamassu stack."
+decho "Done! Now it's time to configure Tigris stack."
 echo
 echo -e "\n*** IMPORTANT ***"
 echo "In a private space, run tigris-mnemonic, write down the words"
