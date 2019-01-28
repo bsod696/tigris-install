@@ -102,8 +102,8 @@ retry 3 npm -g --unsafe-perm install npm@5  >> $LOG_FILE 2>&1
 NODE_MODULES=$(npm -g root)
 NPM_BIN=$(npm -g bin)
 
-decho "Installing tigris-server..."
-retry 3 npm -g --unsafe-perm install bsod696/tigris-server#master >> $LOG_FILE 2>&1
+# decho "Installing tigris-server..."
+# retry 3 npm -g --unsafe-perm install bsod696/tigris-server#master >> $LOG_FILE 2>&1
 
 decho "Creating postgres user..."
 POSTGRES_PW=$(hkdf postgres-pw $SEED)
